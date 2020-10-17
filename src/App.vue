@@ -1,28 +1,60 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <el-container>
+      <el-header>10.17</el-header>
+      <el-container>
+        <el-aside width="200px">
+          <el-menu :default-active="$route.path" router>
+            <el-menu-item
+              v-for="(item, index) in $router.options.routes.slice(1)"
+              :key="index"
+              :index="item.path"
+            >
+              <span slot="title">{{ item.meta.title }}</span>
+            </el-menu-item>
+          </el-menu>
+        </el-aside>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: 'App'
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+table {
+  border-collapse: collapse;
+  width: 80%;
+  background-color: #fff;
+  font-size: 18px;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin-bottom: 45px;
+}
+.code {
+  display: block;
+  width: 100%;
+  min-height: 20px;
+  max-height: 300px;
+  _height: 120px;
+  padding: 6px 8px;
+  background: rgba(248, 249, 251, 0.8);
+  border: 1px solid #dadde0;
+  border-radius: 4px;
+  resize: none;
+  height: 36px;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 10px 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: height 0.3s ease-in-out;
+  transition: height 0.3s ease-in-out;
+  white-space: pre-wrap;
 }
 </style>
